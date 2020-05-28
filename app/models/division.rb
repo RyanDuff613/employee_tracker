@@ -5,6 +5,7 @@ class Division < ApplicationRecord
 
   before_save(:titleize_division)
 
+ 
   private
     def titleize_division
       self.name = self.name.titleize
