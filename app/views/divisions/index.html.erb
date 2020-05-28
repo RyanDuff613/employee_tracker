@@ -1,0 +1,17 @@
+<h1>Employee Project Tracker</h1>
+<h4>Click a division to see its employees!</h4>
+
+<br><h2>Divisions</h2>
+
+<% if @divisions.any? %>
+  <ul>
+    <% @divisions.each do |division| %>
+      <li><%= link_to division.name, division_path(division) %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No divisions currently exist</p>
+<% end %>
+
+
+<p><%= link_to "Create new Division", new_division_path %></p>
