@@ -9,6 +9,7 @@ class EmployeesController < ApplicationController
     @division = Division.find(params[:division_id])
     @employee = @division.employees.new(employee_params)
     if @employee.save
+      flash[:notice] = "Employee Added!"
       redirect_to division_path(@division)
     else
       render :new
@@ -19,6 +20,29 @@ class EmployeesController < ApplicationController
     @division = Division.find(params[:division_id])
     @employee = Employee.find(params[:id])
     render :show
+  end
+
+  def edit
+    @division = Division.find(params[:division_id])
+    @employee = Employee.find(params[:id])
+    render :edit
+  end
+
+  def update
+    @employee = Employee.find(params[:id])
+    if @employee.update(employee_params)
+      flash[:notice] = "Employee Updated!"
+      redirect_to division_path(@employee.division)
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @employee = Employee.find(params[:id])
+    @employee.destroy
+    flash[:notice] = "Employee Deleted!"
+    redirect_to division_path(@employee.division)
   end
 
   private
