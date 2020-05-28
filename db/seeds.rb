@@ -7,5 +7,13 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 division_list = [
-  []
+  ["Division1", "Advertising"],
+  ["Division2", "Marketing"],
+  ["Division3", "IT"],
+  ["Division4", "Sales"],
+  ["Division6", "Advertising"]
 ]
+
+division_list.each do |name, duty|
+  Division.create(name: name, duty: duty)
+end
