@@ -1,3 +1,6 @@
 Rails.application.routes.draw do
-  resources :divisions
+  root to: 'divisions#index'
+  resources :divisions do
+    resources :employees
+  end
 end
